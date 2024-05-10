@@ -1,0 +1,55 @@
+<script type="text/javascript">
+  RED.nodes.registerType('apidaze-config', {
+    category: 'config',
+
+    defaults: {
+      appId: { value: '', required: true },
+      apiKey: { value: '', required: true },
+      apiSecret: { value: '', required: true },
+      defaultSendAsSms: { value: '', required: false }
+    },
+
+    label: function () {
+      return this.appId || 'Apidaze Connect Config'
+    }
+  })
+</script>
+
+<script
+  type="text/html"
+  data-template-name="apidaze-config"
+>
+  <div class="form-row">
+    <label for="node-config-input-appId"><i class="fa fa-book"></i> App ID</label>
+    <input
+      type="text"
+      id="node-config-input-appId"
+    />
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiKey"><i class="fa fa-bookmark"></i> API Key</label>
+    <input
+      type="text"
+      id="node-config-input-apiKey"
+    />
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiSecret"><i class="fa fa-bookmark"></i> API Secret</label>
+    <input
+      type="text"
+      id="node-config-input-apiSecret"
+    />
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-defaultSendAsSms"
+      ><i class="fa fa-bookmark"></i> Default Send As SMS</label
+    >
+    <input
+      type="text"
+      id="node-config-input-defaultSendAsSms"
+    />
+  </div>
+</script>

@@ -1,0 +1,43 @@
+{
+  "name": "node-red-cpaas-apidaze",
+  "version": "1.0.1",
+  "description": "A node-red integration for interacting with Sangoma's APIDAZE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sipharmony, LLC",
+  "license": "ISC",
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "bracketSameLine": false,
+    "jsxSingleQuote": true,
+    "printWidth": 80,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false,
+    "singleAttributePerLine": true
+  },
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "apidaze-config": "nodes/apidaze-config.js",
+      "send-sms": "nodes/sendSms.js"
+    }
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "@apidaze/node": "github:apidaze/sdk-node",
+    "axios": "^1.6.8"
+  }
+}
