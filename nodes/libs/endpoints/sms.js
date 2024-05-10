@@ -15,14 +15,12 @@ module.exports.sendSms = async params => {
   const response = await apidaze.messages
     .send(from, to, message)
     .catch(error => {
-      console.log('Error sending SMS', error)
+      console.log('Error sending SMS.....', error)
     })
-
-  console.log('SMS sent', response)
 
   const { statusCode, body } = response
 
-  if (statusCode !== 200) throw new Error(body?.message || 'Error sending SMS')
+  if (statusCode !== 200) return Promise.reject(body)
 
   return response
 }

@@ -7,16 +7,18 @@ module.exports = function (RED) {
 
     this.apidazeConfig = RED.nodes.getNode(config.apidazeConfig)
 
-    let node = this
+    const node = this
 
     node.on('input', async msg => {
       const { appId, apiKey, apiSecret } = node.apidazeConfig
 
-      const {
+      let {
         to = msg.payload.to || config.to,
         from = msg.payload.from || config.from,
         message = msg.payload.message || config.message
       } = msg.payload
+
+      to = formatPhoneNumber(to)
 
       if (!appId || !apiKey || !apiSecret) {
         node.error('Apidaze credentials not set')
@@ -36,8 +38,10 @@ module.exports = function (RED) {
           message: message
         })
         .catch(err => {
-          node.error(error)
-          node.status({ fill: 'red', shape: 'dot', text: 'Error sending SMS' })
+          node.status({ fill: 'red', shape: 'dot', text: err.message })
+          node.error(err.message)
+
+          return
         })
 
       node.status({ fill: 'green', shape: 'dot', text: 'SMS sent!' })
